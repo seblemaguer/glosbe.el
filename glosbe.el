@@ -92,6 +92,7 @@
 
 ;;; Entry point
 
+;;;###autoload
 (defun glosbe-translate-word (src tgt word)
   (interactive
    (list
@@ -99,7 +100,6 @@
     (read-string (format "To language [%s]: " glosbe-default-to) glosbe-default-to)
     (read-string (format "Word [%s]: " (thing-at-point 'word)) (thing-at-point 'word))))
 
-  ;; (interactive (list (read-string "Glosbe lookup: " ))
   (let* ((key (list word src tgt)))
     (with-current-buffer (get-buffer-create glosbe-buffer-name)
       (let ((inhibit-read-only t))
